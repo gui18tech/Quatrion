@@ -1,0 +1,36 @@
+/* filepath: src/css/main.css
+   Reset, tipografia base e esqueleto de layout. */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);min-height:100dvh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit}
+input{font-family:inherit;color:var(--text-1)}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--cyan-bright);outline-offset:3px;border-radius:6px}
+.bg-ambient{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at 15% 15%, rgba(0,229,201,.06), transparent 45%),
+             radial-gradient(circle at 88% 82%, rgba(108,51,163,.10), transparent 50%), var(--bg)}
+.glass{background:linear-gradient(155deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  border:1px solid var(--border);border-radius:22px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+
+#login-layer{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;transition:opacity .5s ease;opacity:1}
+#login-layer.fade-out{opacity:0;pointer-events:none}
+
+#app-shell{display:none;opacity:0;transition:opacity .5s ease;position:relative;z-index:1;min-height:100dvh}
+#app-shell.show{opacity:1}
+.app-shell-inner{display:flex;min-height:100dvh}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.content{flex:1;padding:26px 32px 50px}
+.content-inner{max-width:1160px;margin:0 auto}
+
+.tab-screen{display:none}
+.tab-screen.active{display:block;animation:fadeIn .4s var(--ease) both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.page-head{margin-bottom:22px}
+.page-head .kicker{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan-bright);opacity:.85}
+.page-head h1{font-size:clamp(21px,2.6vw,27px);font-weight:800;letter-spacing:-.02em;margin-top:6px}
+.page-head p{font-size:13px;color:var(--text-panel);margin-top:5px;max-width:560px;line-height:1.6}
+
+@media (min-width:900px){ .content{padding:30px 44px 50px} }
+@media (prefers-reduced-motion:reduce){ *{animation-duration:.001ms!important;transition-duration:.001ms!important} }
